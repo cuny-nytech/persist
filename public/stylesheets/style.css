@@ -1,4 +1,12 @@
-.fa{
-  margin: 10px;
+.fa {
+  margin: 15px;
+}
+
+
+.fa-thumbs-o-up {
+  cursor: pointer;
+}
+
+.fa-thumbs-o-down {
   cursor: pointer;
 }

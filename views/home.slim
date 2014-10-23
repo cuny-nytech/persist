@@ -2,8 +2,14 @@
   p This is main body of our Twitter clone app.
   
   - for post in @posts
-     p 
-      = post.comment
-     p
-      i class="fa fa-thumbs-o-up fa-lg" = post.likes
-      i class="fa fa-thumbs-o-down fa-lg" = post.dislikes
+      div class="post" data-id = post.id  
+        p 
+          = post.comment
+        p
+          i class="fa fa-thumbs-o-up fa-lg" 
+            span class="like"  
+              = post.likes
+          
+          i class="fa fa-thumbs-o-down fa-lg" 
+            span class="dislike"
+              = post.dislikes

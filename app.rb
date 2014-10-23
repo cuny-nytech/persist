@@ -38,5 +38,11 @@ class App < Sinatra::Base
     slim :home
   end
 
+  # declare put operation that will update value in db
+  # pass id of the object and that is how we are going to
+  # identify it and then pass which value we are updating
+  # and to what value (only for likes and dislikes) everything
+  # else cannot be changed
+
 end
 
