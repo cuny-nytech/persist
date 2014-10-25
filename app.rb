@@ -18,14 +18,15 @@ DataMapper.setup(:default, 'postgres://pedro1:pjer1976@localhost/tclone')
 class AppPost
   include DataMapper::Resource
 
-  property :id, Integer, :key => true
+  property :id, Serial
   property :comment, Text
   property :author, Text
-  property :likes, Integer
-  property :dislikes, Integer
+  property :likes, Integer, :default => 0
+  property :dislikes, Integer, :default => 0
   property :emotion, Text
-  property :posted_on, DateTime
+  property :posted_on, DateTime, :default => lambda { Time.now }
 end
+
 
 DataMapper.finalize.auto_upgrade!
 
@@ -43,6 +44,46 @@ class App < Sinatra::Base
   # identify it and then pass which value we are updating
   # and to what value (only for likes and dislikes) everything
   # else cannot be changed
+  get '/update/:id/:value/:field' do
+    p = AppPost.get(params[:id])
+    status 200 
+    # p.update(params[:field] => params[:value])
+    if params[:field] == 'like'
+      p.likes = params[:value]
+    elsif params[:field] == 'dislike'
+      p.dislikes = params[:value]
+    end
+    p.save
+  end
+
+
+  post '/form' do
+    p = AppPost.new
+    p.comment = h params[:message]
+    if params[:author] != ""
+      p.author = h params[:author]
+    else
+      p.author = "Anonymous"
+    end
+    p.likes = 0
+    p.dislikes = 0
+    p.posted_on = Time.now
+    p.save
+
+    redirect '/'
+  end
+
+
+  not_found do
+    halt 404, 'page not found'
+  end
+
+
+  helpers do
+    include Rack::Utils
+    alias_method :h, :escape_html
+  end
+
 
 end
 

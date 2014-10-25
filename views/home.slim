@@ -1,10 +1,9 @@
 
-  p This is main body of our Twitter clone app.
   
   - for post in @posts
       div class="post" data-id = post.id  
         p 
-          = post.comment
+          = h post.comment
         p
           i class="fa fa-thumbs-o-up fa-lg" 
             span class="like"  
@@ -13,3 +12,8 @@
           i class="fa fa-thumbs-o-down fa-lg" 
             span class="dislike"
               = post.dislikes
+
+        p
+          Author = h post.author
+          span class="time" 
+            = post.posted_on.strftime("%F %T")

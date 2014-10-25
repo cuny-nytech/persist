@@ -3,19 +3,43 @@ html
   head
     title Simple Twitter Clone
     meta name="author" content="Slavisa Djukic"
+    link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"
     link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet"
     link href="./stylesheets/style.css" rel="stylesheet"
     h1 The Life of Pedro
 
   body
-    .content
+    div#new_entry
+      form[action="/form" method="post" 
+          data-parsley-validate]
+        label for="message" Post message (max 140 chars)
+        textarea[name="message" 
+                 rows=3 
+                 cols=50 
+                 data-parsley-trigger="keyup" 
+                 data-parsley-maxlength="140" 
+                 data-parsley-validation-threshold="10"
+                 placeholder="New message" required]
+        input[type="text" 
+              name="author" 
+              placeholder="Anonymous"]        
+        input[type="text"
+              name="isBot"
+              placeholder="Enter happy to show you're human" 
+              data-parsley-equalto="happy" required]
 
+        input.btn-custom type="submit" 
+
+
+    div.content
       == yield
 
 
   script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"      
+  script src="./javascripts/parsley.min.js"
   script src="./javascripts/el_script.js" 
-  div id="footer"
-  |Pedro de Siminho 2014
+
+  footer
+    | Pedro de Siminho 2014
 
 
