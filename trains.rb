@@ -1,18 +1,8 @@
 require 'sinatra'
 require 'sinatra/activerecord'
+require './environments'
 
-db = URI.parse('postgres:/entries')
-
-ActiveRecord::Base.establish_connection(
-  :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
-  :host => db.host,
-  :username => db.user,
-  :passowrd => db.password,
-  :database => db.path[1..-1],
-  :encoding => 'utf8'
-)
-
-class Note < ActiveRecord::Base
+class Post < ActiveRecord::Base
 end
 
 get "/" do
