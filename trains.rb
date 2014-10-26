@@ -6,16 +6,26 @@ class Post < ActiveRecord::Base
 end
 
 get "/" do
-  @notes = Note.order("created_at DESC")
-  "Hello World"
+  @posts = Post.order("created_at DESC")
+  erb :"posts/home"
 end
 
-get "/new" do
+get "/posts/create" do
+  @post = Post.new
+  erb :"posts/create"
 end
 
-post "/new" do
-  @note = Note.new(params[:note])
-  if @note.save
-    redirect "note/#{@note.id}"
+post "/posts" do
+  @post = Post.new(params[:post])
+  if @post.save
+    redirect "/posts/#{@post.id}"
+  else
+    erb :"posts/create"
   end
+end
+
+get "/posts/:id" do
+  @post = Post.find(params[:id])
+  @title = @post.date
+  erb :"posts/post"
 end
