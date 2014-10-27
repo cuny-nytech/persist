@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20141026185213) do
 
   create_table "posts", force: true do |t|
+    t.string   "title"
     t.string   "line"
     t.string   "date"
     t.text     "body"

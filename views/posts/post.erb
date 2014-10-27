@@ -1,3 +1,9 @@
 <h1><%= @post.date %></h1>
 <h2><%= @post.line %></h2>
 <p><%= @post.body %></p>
+<% if Post.find_by(id: @post.id + 1) %>
+<a href="/posts/<%= @post.id + 1 %>">Next post</a>
+<% end %>
+<% if @post.id > 1 %>
+<a href="/posts/<%= @post.id - 1 %>">Previous post</a>
+<% end %>

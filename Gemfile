@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.1.3"
+ruby "1.9.3", :patchlevel => "484"
 
 gem 'rubocop'
 gem 'activerecord'
