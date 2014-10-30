@@ -1,3 +1,4 @@
-source 'https://rubygems.org'
-
-gem 'rubocop'
+source "https://rubygems.org"
+ruby "2.1.2"
+gem 'sinatra', '1.1.0'
+gem 'pg', :group => :production
