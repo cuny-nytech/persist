@@ -1,19 +1,4 @@
 
- <% conn= PG::Connection.new(host:'localhost',dbname:'singlepurp',port:'5432',)
- 
-def submitpost(n, a, p)
-    t=Time.now
-    t.getlocal("-04:00")
-    conn.exec_params("SELECT * FROM post ORDER BY posttime DESC LIMIT 1") do |result|
-        result.each do |row|
-            lastid=id
-        end
-    end
-    conn.exec_params("INSERT INTO post (id, postttime, username, avatar, userpost) VALUES (lastid, t, n, a, p)")
-
-end
-
- %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -40,35 +25,50 @@ end
 
     		<!-- ruby code to get the 20 most recent posts -->
 
-            <% conn.exec_params("SELECT * FROM post ORDER BY posttime DESC LIMIT 10") do |result|
-                    if result.ntuples == 0 
-            %>
-            <div class="post">
-                <img src="manila.JPG">
-                <div class="ptext">
-                    <p id="name"> Not Availble </p> 
-                    <p id="text"> I'm sorry your not getting anything from the database, or there is nothing in the database </p>
-                    <p id="time"> Infinity </p>
-                </div>
-            </div>
-            <%
-                    else 
-                        result.each do |row|
-            %> 
+          
+             
 
     		<div class="post">
-    			<img src="<%= row.avatar %>">
+    			<img src="http://tinyurl.com/omyq8mj">
     			<div class="ptext">
-    				<p id="name"> <%= row.username %></p> 
-    				<p id="text"> <%= row.userpost %></p>
-    				<p id="time"> <%= row.posttime %> </p>
+    				<p id="name"> NotObama</p> 
+    				<p id="text">I am amazing and will be remembered for all of history  </p>
+    				<p id="time">2014-10-28 08:00:00</p>
     			</div>
     		</div> <!-- end of post -->
-    	    <%
-                        end 
-                    end
-                end
-            %>
+            <div class="post">
+                <img src="http://tinyurl.com/pxh8tbx">
+                <div class="ptext">
+                    <p id="name"> notPutin </p> 
+                    <p id="text">I will conquer the world, Genghis Khan style, nikkaaahuuss </p>
+                    <p id="time">2014-10-21 13:03:00</p>
+                </div>
+            </div> <!-- end of post -->
+            <div class="post">
+                <img src="http://tinyurl.com/pa92cdj">
+                <div class="ptext">
+                    <p id="name"> NotChayney</p> 
+                    <p id="text">Git her duuuuuuuuuunN!    </p>
+                    <p id="time"> 2014-10-21 13:02:00 </p>
+                </div>
+            </div> <!-- end of post -->
+            <div class="post">
+                <img src="http://tinyurl.com/l66go3e">
+                <div class="ptext">
+                    <p id="name"> NotGeorgeWBush</p> 
+                    <p id="text">Fuck you dad. Get off my Favorite! Why do you alwasy shave to ruin EVERYTHING!  </p>
+                    <p id="time">2014-10-21 13:00:00  </p>
+                </div>
+            </div> <!-- end of post -->
+    	    <div class="post">
+                <img src="http://tinyurl.com/mcs3e29">
+                <div class="ptext">
+                    <p id="name"> NotGeorgeBush</p> 
+                    <p id="text">This here is the darn best site on the internet, and i fully endorse it      </p>
+                    <p id="time"> 2014-10-21 12:54:00  </p>
+                </div>
+            </div> <!-- end of post -->
+            
 
     	</div>  <!-- end of main-->
         <!-- <div id="pageinate"> 
@@ -102,7 +102,7 @@ body {
 	margin:0px auto 0px auto;
     padding-top:0px;
 	width: 700px;
-	height:1000px;
+    height: 850px;
 }
 #header {
     top:-30px;
@@ -168,12 +168,13 @@ body {
 }
 #bottomfill li{
     display:inline-block;
-    margin: 0px 10px 0px 10px;
+    margin: 0px 40px 0px 40px;
 }
 #bottomfill {
     text-align: center;
     margin-top: -30px;
 }
+
 
 
 .ptext {

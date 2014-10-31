@@ -5,7 +5,7 @@ require 'pg'
 
 
 get '/' do 
-	erb :indexEx
+	erb :index
 end
 
 get '/about' do 
