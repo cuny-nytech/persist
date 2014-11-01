@@ -1,0 +1,26 @@
+<div id="new_post">
+	<form action="/" method="post">
+	        <textarea id="post_title" name="post_title" placeholder="Add Post Title" ></textarea>
+		<textarea id="post_content" name="content" placeholder="Add Post Contents"></textarea>
+		<input type="submit" value="Add Post">
+	</form>
+</div>
+
+<% @posts.each_with_index do |post, i| %>
+
+    <div <%='id="post_left"' if i % 2==0%>
+         <%='id="post_right"'if i % 2==1%>
+	
+		
+		<p class="links">
+		   <a href="/<%= post.id %>/"><%=post.id %></a>   
+	        </p>
+	        <%= post.post_title %><br>
+	        <%= post.content %>
+		
+		<p class="meta">Created: <%= post.created_at %></p>
+	
+   </div>
+
+
+<% end %>

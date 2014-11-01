@@ -1,0 +1,10 @@
+<% if @post %>
+	<form action="/<%= @post.id %>" method="post" id="edit">
+		<input type="hidden" name="_method" value="put">
+	        <textarea id="post_title" name="post_title"  ><%= @post.post_title %></textarea>
+		<textarea id="post_content" name="content" ><%= @post.content %></textarea>
+
+		<input type="submit">
+	</form>	
+<% end %>
+
