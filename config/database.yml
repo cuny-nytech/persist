@@ -1,6 +1,7 @@
 development:
-  adapter: postgresql
-  database: development
-  username: 'postgres'
-  password: '135140967'
-  host: localhost
+adapter: postgresql
+encoding: unicode
+pool: 5
+database: 'development'
+username: 'wayne'
+password: '135140967'
