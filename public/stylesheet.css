@@ -1,6 +1,7 @@
 *{
-	font-family: Garamond;
-	color: black;
+	font-family: Arial, Helvetica, Sans-Serif;
+	color: #151B54;
+	/*font-size:medium;*/
 }
 body{
 	background-color: #EEEEEE;
@@ -26,9 +27,37 @@ div {
 	padding-botton: 10px;
 }
 
-#post {
-	display: inline-block;
+	
+
+#post_left {
+	display: float: left;
 	border-color: #CC00CC;
+	width: 95%;
+	/*height: 60px;*/
+
+	margin-bottom: 10px;
+	padding-left: 40px;
+	padding-top: 10px;
+	padding-botton: 10px;
+}
+
+#post_right {
+	display: float: left;
+	/*display: inline-block;*/
+	border-color: #CC00CC;
+	width: 95%;
+	/*height: 60px;*/
+
+	margin-bottom: 10px;
+	padding-left: 40px;
+	padding-top: 10px;
+	padding-botton: 10px;
+}
+
+
+#new_post {
+	/*display: inline-block;*/
+	border-color: orange;
 	width: 95%;
 	/*height: 60px;*/
 
@@ -49,7 +78,12 @@ div {
 
 
 
-
+#image{
+	height="100"
+	width="120"
+        border-style: 1px solid #DDD;
+	border-radius: 50%
+}	
 
 
 	
@@ -71,25 +105,17 @@ div {
 	background-color: black;
 
 	margin: 20px 30px 20px 30px;
-
-	
 	
 }
 
-tr:nth-child(3) td div{
-	/*display: inline-block;*/
-	height: 100px;
-	
-	
-	/*background-color: black;*/
-	margin: 20px 30px 10px 30px;
-	padding: 5px;
+#post_title{
+	height:20px;	
+	width: 50%;
+}	
+
+#post_content{
+	height:100px;	
+	width: 95%;
 }
 
-
-table{
-	margin: auto;
-	width: 100%;
-	margin-top: 50px;
-}
 	

@@ -15,7 +15,7 @@ end
 DataMapper.auto_upgrade!
 
 get '/' do
-	@posts = Post.all :order => :id.asc 
+	@posts = Post.all :order => :id.desc 
 	erb :home
 end
 
@@ -30,3 +30,22 @@ post '/' do
 end
 
 
+
+get '/:id/' do
+	#retreive post from database
+	@post = Post.get params[:id]
+        @title = "Edit blog post"
+        erb :edit
+end
+
+
+
+put '/:id' do
+	
+  p = Post.get params[:id]
+   p.post_title = params[:post_title]
+   p.content = params[:content]
+   p.updated_at = Time.now
+   p.save
+   redirect '/'
+end
