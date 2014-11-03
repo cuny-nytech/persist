@@ -96,7 +96,7 @@ end
                         lastid=row['id'].to_i
                     end
                 end
-                if( lastid >(offset+15))
+                if( lastid >=(offset+15))
                 %>
                 <form method="get" action="/<%=(index+1)%>">
                     <input class="pagebutton" id="right" type="submit" value=">>">
@@ -104,7 +104,7 @@ end
                 <%
                 end
                 %>
-                
+
             </div>
 
     	</div>  <!-- end of main-->
