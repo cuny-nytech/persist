@@ -37,6 +37,7 @@ post '/' do
     	params[:avatarimg] =="" 
     	params[:post]=="" 
     end
+    conn.close
 
 	erb :index
 end
