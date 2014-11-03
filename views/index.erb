@@ -91,9 +91,9 @@ end
                 <%
                 end
                 lastid=0;
-                conn.exec_params("SELECT * FROM post ORDER BY id DESC LIMIT 1") do |result|
+                conn.exec_params("SELECT * FROM post") do |result|
                     result.each do |row|
-                        lastid=row['id'].to_i
+                        lastid++
                     end
                 end
                 if( lastid >=(offset+15))
