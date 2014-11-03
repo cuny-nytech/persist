@@ -1,9 +1,21 @@
 <html>
 <head>
-  <title>Bren's site!</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <title>Subway Stories<title>
 </head>
-<body>
-  <a href="/posts/create">Make a post!</a>
+<body style="background-color: #85ADAD">
+  <div id="top">
+    <a href="/posts/create" id="first">Make a post!</a>
+  </div>
+  <div id="rules">
+    <ul>
+      <li>Post about NYC subway stories</li>
+      <li>Make sure you enter a valid train line</li>
+    </ul>
+  </div>
+  <div>
   <%= yield %>
+  </div>
+  <a href="/">Home</a>
 </body>
 </html>

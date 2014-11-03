@@ -5,6 +5,8 @@ gem 'rubocop'
 gem 'activerecord'
 gem 'sinatra'
 gem 'sinatra-activerecord'
+gem 'sinatra-flash'
+gem 'sinatra-redirect-with-flash'
 
 group :development do
   gem 'sqlite3'

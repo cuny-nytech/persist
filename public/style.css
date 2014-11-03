@@ -1,0 +1,38 @@
+#top {
+  background-color: black;
+  margin: -10px;
+  padding: 5px;
+  padding-left: 10px;
+  font-family: Helvetica;
+}
+
+a:link {
+  color: white;
+  text-decoration: none;
+}
+
+a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+}
+
+#plink {
+  color: gray;
+}
+
+#plink:visited {
+  color: #00007A;
+}
+
+#rules {
+  background-color: #FFFF99;
+  float: right;
+  clear: both;
+  padding-right: 10px;
+  margin-top: 10px;
+  margin-right: -7px;
+}
