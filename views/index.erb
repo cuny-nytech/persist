@@ -90,16 +90,16 @@ end
                 <form>
                 <%
                 end
-                lastid=0;
+                numentry=0;
                 conn.exec_params("SELECT * FROM post") do |result|
                     result.each do |row|
-                        lastid+=1
+                        numentry+=1
                     end
                 end
-                if( lastid >(offset+15))
+                if( numentry >(offset+15))
                 %>
                 <form method="get" action="/<%=(index+1)%>">
-                    <input class="pagebutton" id="right" type="submit" value=">>">
+                    <input class="pagebutton" id="right" type="submit" value="<%=numentry%> >> <%=offset+15%>">
                 <form>
                 <%
                 end
