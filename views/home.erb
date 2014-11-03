@@ -1,0 +1,24 @@
+<div id = "new_recipe">
+	<form action="/" method="post">
+    	<textarea id="fcontent" name="content" placeholder="Recipe name..."></textarea>
+    	<textarea id="scontent" name="content2" placeholder="Ingredients..."></textarea>
+    	<input type="submit" value="Add Recipe!">
+ 	</form>
+ </div>
+
+<% @notes.each do |note| %>
+	<div id="test">
+    	<p class="links">
+      		<a href="/<%= note.id %>/"<%=note.id %></a>
+    	</p>
+    	
+    	<%= note.content %><br>
+    	<%= note.content2 %>
+
+<!--     	<p>
+			<span><a href="/<%= note.id %>">[delete]</a></span>
+		</p> -->
+
+    	<p class="meta">Created: <%= note.created_at %></p>
+  	</div>
+<% end %>
