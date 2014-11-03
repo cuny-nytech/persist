@@ -1,0 +1,133 @@
+html {
+  height : 100%;
+}
+
+body {
+  background-color :white;
+  margin           : 0px;
+  padding          : 0px;
+  height           : 100%; 
+}
+
+img {
+  -webkit-touch-callout : none;
+  -webkit-user-select   : none;
+  -khtml-user-select    : none;
+  -moz-user-select      : none;
+  -ms-user-select       : none;
+  user-select           : none;
+}
+
+a {
+  color : #00849b;
+}
+
+a:hover {
+  color           : #00b8e5;
+  text-decoration : none;
+}
+
+a:focus {
+  outline : 0;
+}
+
+button:focus {
+  outline : 0;
+}
+
+button::-moz-focus-inner {
+  border : 0;
+}
+
+.header-logo-left {
+  float   : left;
+  height  : 50px;
+  display : table;
+  padding : 0px 10px 0px 0px;
+}
+
+.header-logo-left a {
+  padding        : 2px 0px 0px 0px !important;
+  display        : table-cell;
+  vertical-align : middle;
+}
+
+.header-logo-left img {
+  max-height : 45px;
+  margin     : 0px;
+}
+
+.header-logo-right {
+  float   : right;
+  height  : 50px;
+  display : table;
+  padding : 0px 0px 0px 10px;
+}
+
+.header-logo-right a {
+  padding        : 2px 0px 0px 0px !important;
+  display        : table-cell;
+  vertical-align : middle;
+}
+
+.header-logo-right img {
+  max-height : 45px;
+  margin     : auto;
+}
+
+.fill {
+  position           : relative;
+  width              : 100%;
+  min-height         : 100%;
+  background-color   : transparent;
+  padding            : 51px 0px 180px 0px;
+}
+  
+.content {  
+  background-color : transparent;
+  width            : 100%;
+  padding          : 0px 0px 15px 0px;
+}
+
+.footer {
+  position         : absolute;
+  bottom           : 0px;
+  width            : 100%;
+  background-color : white;
+  height           : 150px;
+}
+
+.footer .container {
+}
+
+
+.footer .footer-nav {
+  float   : left;
+  padding : 0px;
+  margin  : 20px 0px 50px 0px;
+}
+
+.footer .footer-nav li {
+  display         : inline;
+  list-style-type : none;
+  padding-right   : 30px;
+}
+
+.footer .footer-nav li a {
+  color : #555;
+}
+
+.footer .footer-nav li a:hover {
+  color           : #111;
+  text-decoration : none;
+}
+
+@media only screen and (min-width:  768px) and (max-width:  991px) { ... }
+@media only screen and (min-width:  992px) and (max-width: 1199px) { ... }
+@media only screen and (min-width: 1200px) { ... }
+
+
+
+
+
+

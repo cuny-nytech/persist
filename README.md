@@ -1,18 +1,37 @@
-# Persistence assignment
+# Sinatra "Hello World" Example
 
-Create a site in Sinatra that saves information from a form to a database, then displays that information on the page. Examples:
+1. Install locally
 
-* A single-user Twitter clone
-* A blog that can be edited online
-* A note-taking app
-* A recipe site
-* *etc.*
+    ```bash
+    # get the code
+    git clone https://github.com/cuny-nytech/sinatra-example.git
+    # go into the project folder
+    cd sinatra-example
+    # install the dependencies listed in the Gemfile
+    bundle
+    ```
 
-Using a SQL database is recommended, specifically PostgreSQL (a.k.a. "Postgres") via the [pg](https://bitbucket.org/ged/ruby-pg/wiki/Home) gem. The app doesn't need a lot of bells & whistles, e.g. user authentication, unless you get that first part done early.
+1. Run locally
 
-**Deploy the application to Heroku**, and **submit a pull request** to this repository. Include:
+    ```bash
+    # start Rack (which runs config.ru)
+    bundle exec rackup
+    # open the page
+    open http://localhost:9292/hi
+    ```
 
-* All the necessary files
-* In the README:
-    * Setup instructions
-    * A link to the live app on Heroku
+1. Install [Heroku Toolbelt](https://toolbelt.heroku.com/)
+1. Deploy to Heroku
+
+    ```bash
+    # create the app on Heroku
+    heroku create
+    # send latest code to Heroku
+    git push -u heroku master
+    # get "Web URL" of Heroku app
+    heroku apps:info
+    # open the page, using hostname printed by previous command
+    open http://SOMETHING.herokuapp.com/hi
+    ```
+
+See the example at http://cuny-sinatra-example.herokuapp.com/hi.

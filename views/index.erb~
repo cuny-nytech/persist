@@ -1,0 +1,86 @@
+<% content_for :title do %>
+Image Histogram
+<% end %>
+
+<div class="container">
+  <div class="page-header">
+    <h4> 
+      This app takes an image as input and produces its color and intensity <a href="http://www.cambridgeincolour.com/tutorials/histograms1.htm" target="_blank">histogram</a>.
+    </h4>
+  </div>
+</div>
+    
+<div class="container">
+
+  <% if defined?(error_message) %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <%= erb :alert,
+                  :locals => {
+                    :message => error_message,
+                    :type    => 'danger',
+                    :dismissable => true
+                  }
+          %>
+        </div>
+      </div> 
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= erb :form %>
+    </div>
+  </div>
+
+  <% if defined?(success_message) %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <%= erb :alert,
+                  :locals => {
+                    :message => success_message,
+                    :type    => 'success',
+                    :dismissable => true
+                  }
+          %>
+        </div>
+      </div> 
+    </div>
+  <% end %>
+
+  <% if defined?(image_url) %>
+    <div class='row'>
+      <style>
+        .result-image img {
+          max-width  : 100%;
+          max-height : 300px;
+          width  : auto;
+          height : auto;
+        }
+      </style>
+
+      <div class="col-xs-6">        
+        <div class="result-image">
+          <a href='<%= image_url %>' target="_blank">  
+            <img src='<%= image_url %>'>
+          </a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
