@@ -33,12 +33,12 @@ post '/form' do
       end
     end
     conn.exec_params("INSERT INTO post (id, posttime, username, avatar, userpost) VALUES ('#{lastid}', '#{t}', '#{params[:name]}', '#{params[:avatarimg]}', '#{params[:post]}')")
-  	params[:name]=""
-  	params[:avatarimg] ="" 
-    params[:post]="" 
+    conn.close()
   end
-  conn.close()
-
+  params[:name]=""
+  params[:avatarimg] ="" 
+  params[:post]="" 
+  
 	redirect '/'
 end
 
