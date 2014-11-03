@@ -160,6 +160,10 @@ body {
     text-align: left;
 
 }
+#rickroll {
+    color:#000000;
+    text-align: center;
+}
 
 #disclaimer {
     font-size: .8em;
