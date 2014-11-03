@@ -1,0 +1,19 @@
+
+  
+  - for post in @posts
+      div class="post" data-id = post.id  
+        p 
+          = h post.comment
+        p
+          i class="fa fa-thumbs-o-up fa-lg" 
+            span class="like"  
+              = post.likes
+          
+          i class="fa fa-thumbs-o-down fa-lg" 
+            span class="dislike"
+              = post.dislikes
+
+        p class="author"
+          Author = h post.author
+          span class="time" 
+            = post.posted_on.strftime("%F %T")
