@@ -20,7 +20,7 @@ end
 class ImageHistogramApi
 
   include HTTParty
-  base_uri 'image-histogram-api.herokuapp.com'
+  base_uri 'localhost:9906'
 
   def self.post_histogram(image_url)
     self.post('/histogram', 
