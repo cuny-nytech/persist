@@ -13,6 +13,8 @@ get '/contact' do
 end
 
 get '/' do 
+  conn.exec_params("DELETE FROM post WHERE id=16")
+  conn.exec_params("DELETE FROM post WHERE id=15")
 	erb :index
 end
 
@@ -37,7 +39,7 @@ post '/form' do
     	params[:avatarimg] =="" 
     	params[:post]=="" 
     end
-    conn.close
+    conn.close()
 
 	redirect '/'
 end
