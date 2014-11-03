@@ -1,0 +1,46 @@
+<div class="histograms">
+  <div id='<%= "_#{doc.id}_graphR" %>', style="width:100%; height:<%= 1*(height/5) %>px;"></div>
+  <div id='<%= "_#{doc.id}_graphG" %>', style="width:100%; height:<%= 1*(height/5) %>px;"></div>
+  <div id='<%= "_#{doc.id}_graphB" %>', style="width:100%; height:<%= 1*(height/5) %>px;"></div>
+  <div id='<%= "_#{doc.id}_graphL" %>', style="width:100%; height:<%= 2*(height/5) %>px;"></div>
+
+  <script>
+    var histogram = <%= doc.histogram %>;
+    
+    var graphs = [
+      { elemId : '#<%= "_#{doc.id}_graphR" %>', data : { data : histogram.red,       label : "red",       color : "#f00" }},
+      { elemId : '#<%= "_#{doc.id}_graphG" %>', data : { data : histogram.green,     label : "green",     color : "#0f0" }},
+      { elemId : '#<%= "_#{doc.id}_graphB" %>', data : { data : histogram.blue,      label : "blue",      color : "#00f" }},
+      { elemId : '#<%= "_#{doc.id}_graphL" %>', data : { data : histogram.luminance, label : "luminance", color : "#000" }}
+    ];        
+    
+    for (var i = 0; i < graphs.length; i++) {
+      var graphDiv = d3.select(graphs[i].elemId);
+    
+      var width  = graphDiv.style("width").replace("px", "");
+      var height = graphDiv.style("height").replace("px", "");
+    
+      var svg = graphDiv
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+      
+      var opts = {
+        "margin" : { t : 0, r : 1, b : 0, l : 0 },
+        "xPos"   : 0,
+        "yPos"   : 0,
+        "width"  : width,
+        "height" : height,
+        "hover"  : true,
+        "legend" : { display : true, orientation : "right", size : "M" },
+        "xAxis"  : { displayPath : false, displayValues : false, displayGrid : false, label : "", min : undefined, max : undefined, time : false },
+        "yAxis"  : { displayPath : false, displayValues : false, displayGrid : false, label : "", min : undefined, max : undefined, },
+        "path"   : { displayShadow : false, interpolate : "linear", size : "XS", type : "area" },
+        "border" : { display : false, size : "M" },
+      };
+      
+      new Graph(svg, opts, [ graphs[i].data ]);
+    }
+  </script>
+</div>
+  

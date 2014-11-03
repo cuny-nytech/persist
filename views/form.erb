@@ -1,0 +1,45 @@
+<form class="form", role="form", method="post", enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="image"> 
+          Upload an image
+        </label>
+        <input type="file" name="image" id="image"/>
+      </div>
+    </div> 
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="control-label" for="url"> 
+          Or enter URL address of an image
+        </label>
+        <input class="form-control" type="text" name="url" id="url"/>
+      </div>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-xs-6">
+      <div class="form-group">
+        <label class="control-label" for="author"> 
+          Enter your name if you would like to save the result
+        </label>
+        <input class="form-control" type="text" name="author" id="author"/>
+      </div>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" onclick="this.innerHTML='Computing - please wait...';this.disabled=true;this.form.submit();">
+          Compute histogram
+        </button>
+      </div> 
+    </div> 
+  </div> 
+</form> 
+

@@ -1,0 +1,33 @@
+<style>
+  .result-image img {
+    max-width  : 100%;
+    max-height : <%= height %>px;
+    width  : auto;
+    height : auto;
+  }
+</style>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><%= doc.image_name %></div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-6">
+        <p>Created on <i><%= doc.created_at.in_time_zone('Eastern Time (US & Canada)').strftime("%d/%m/%Y %H:%M") %></i> by <i><%= doc.author %></i></p>   
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6">        
+        <div class="result-image">
+          <a href='<%= doc.image_url %>' target="_blank">  
+            <img src='<%= doc.image_url %>'>
+          </a>
+        </div>
+      </div>
+
+      <div class="col-xs-6"> 
+        <%= erb :graph, 
+                :locals => { 'doc' => doc, 'height' => height } %>
+      </div> 
+    </div>
+  </div>
+</div>

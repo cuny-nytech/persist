@@ -1,0 +1,204 @@
+
+<!DOCTYPE html> 
+<html>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<head> 
+  <link rel="stylesheet" href="../css/graph-1.0.0.css">
+  <script type="text/javascript" src="../d3/d3.v3.js"></script>
+  <script type="text/javascript" src="../js/graph-1.0.0.js"></script>
+  
+  <script type="text/javascript" > 
+    function plotIt() {
+        var svg = d3.select("#example")
+          .append("svg")
+          .attr("width", 900)
+          .attr("height", 1000);
+          
+          
+        //////////////////////////////////////////////////////////////////////////////////////////
+        var g = new Graph(svg, {
+          "margin" : { t : 25, r : 15, b : 35, l : 45 },
+          "xPos"   : 0,
+          "yPos"   : 0,
+          "width"  : 450,
+          "height" : 200,
+          "hover"  : true,
+          "title"  : { text : "Some functions", size : "M", orientation : "center"},
+          "legend" : { display : true, orientation : "right", size : "M" },
+          "xAxis"  : { displayPath : false, displayValues : true, displayGrid : true, label : "x", min : undefined, max : undefined, time : false },
+          "yAxis"  : { displayPath : false, displayValues : true, displayGrid : true, label : "y", min : undefined, max : undefined, },
+          "path"   : { displayShadow : false, interpolate : "monotone", size : "S", type : "area" },
+          "border" : { display : true, size : "XS" },
+          "debug"  : { displayBox : false, displayBorder : false },
+        }, [ 
+		      { "f" : function(x) { return Math.sin(x)/x } , "domain" : [-100, 100], "dx" : 0.1, "label" : "sin(x)/x" },
+		    ]);
+		//////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+ 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        var data1 = [];
+        var data2 = [];
+        var data3 = [];
+        var data4 = [];
+        for (var i = 0; i < 5; i+=0.2) {
+          data1.push([i, Math.round(i*Math.random())]);
+          data2.push([i, Math.round(i*Math.random())]);
+          data3.push([i, Math.round(i+Math.random())]);
+          data4.push([i, Math.round(i+Math.random())]);
+        } 
+        var g2 = new Graph(svg, {
+          "margin" : { t : 25, r : 15, b : 35, l : 45 },
+          "xPos"   : 450,
+          "yPos"   :   0,
+          "width"  : 450,
+          "height" : 200,
+          "hover"  : true,
+          "title"  : { text : "Some data", size : "S", orientation : "left"},
+          "legend" : { display : true, orientation : "right", size : "S" },
+          "xAxis"  : { displayPath : false, displayValues : false, displayGrid : false, label : "", min : undefined, max : undefined, time : false },
+          "yAxis"  : { displayPath : false, displayValues :  true, displayGrid :  true, label : "", min : -1, max : 6, },
+          "path"   : { displayShadow : true, interpolate : "monotone", size : "M" },
+          "border" : { display : false, size : "S" },
+          "debug"  : { displayBox : false, displayBorder : false },
+        }, [
+          { "data" : data1 , "label" :   "one" },
+          { "data" : data2 , "label" :   "two" },
+          { "data" : data3 , "label" : "three" },
+          { "data" : data4 , "label" :  "four" }
+        ]); 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        
+        
+         
+        
+        
+        
+        
+        //////////////////////////////////////////////////////////////////////////////////////////
+        var a = [];
+        var b = [];
+        var c = [];
+        var d = [];
+        for (var i = 0; i < 30; i+=1) { 
+          a.push([i, 10*Math.random()]);
+          b.push([i,  8*Math.random()]);
+          c.push([i,  3*Math.random()]);
+          d.push([i, 12*Math.random()]);
+        } 
+        var g3 = new Graph(svg, {
+          "margin" : { t : 25, r : 15, b : 35, l : 45 },
+          "xPos"   :  0,
+          "yPos"   : 200,
+          "width"  : 900,
+          "height" : 300,
+          "hover"  : true,
+          "title"  : { text : "Some big graph", size : "XL", orientation : "center"},
+          "legend" : { display : true, orientation : "left", size : "XL" },
+          "xAxis"  : { displayPath : false, displayValues : false, displayGrid : false, label : "", min : undefined, max : undefined, time : false },
+          "yAxis"  : { displayPath :  true, displayValues :  true, displayGrid :  true, label : "", min : 0, max : 13, },
+          "path"   : { displayShadow : false, interpolate : "monotone", size : "XS", type : "area" },
+          "border" : { display : false, size : "S" },
+          "debug"  : { displayBox : false, displayBorder : false },
+        }, [
+          { "data" : a , "label" : "A" , "color" : "#00bfff" },
+          { "data" : b , "label" : "B" , "color" : "#f08080" },
+          { "data" : c , "label" : "C" , "color" : "#daa520" },
+          { "data" : d , "label" : "D" , "color" : "#556b2f" }
+        ]); 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //////////////////////////////////////////////////////////////////////////////////////////
+        var initTime = new Date().getTime();
+        
+        var data5 = [];
+        var data6 = []; 
+        for (var i = 0; i < 5; i+=0.1) {
+          data5.push([initTime + i * 86400000, 100*Math.random()]);
+          data6.push([initTime + i * 86400000, 100*Math.random()]); 
+        } 
+        var g4 = new Graph(svg, {
+          "margin" : { t : 25, r : 15, b : 35, l : 45 },
+          "xPos"   :   0,
+          "yPos"   : 550,
+          "width"  : 450,
+          "height" : 200,
+          "hover"  : true,
+          "title"  : { text : "%", size : "S", orientation : "left"},
+          "legend" : { display : true, orientation : "right", size : "S" },
+          "xAxis"  : { displayPath : false, displayValues : true, displayGrid :  true, label : "", min : undefined, max : undefined, time : true },
+          "yAxis"  : { displayPath : false, displayValues : true, displayGrid : false, label : "", min : 0, max : 100, },
+          "path"   : { displayShadow : true, interpolate : "monotone", size : "S", type : "line" },
+          "border" : { display : true, size : "XS" },
+          "debug"  : { displayBox : false, displayBorder : false },
+        }, [
+          { "data" : data5 , "label" :   "one" },
+          { "data" : data6 , "label" :   "two" }, 
+        ]); 
+        
+        var data7 = [];
+        var data8 = []; 
+        for (var i = 0; i < 5; i+=0.1) {
+          data7.push([initTime + i * 86400000, 100*Math.random()]);
+          data8.push([initTime + i * 86400000, 100*Math.random()]); 
+        } 
+        var g5 = new Graph(svg, {
+          "margin" : { t : 25, r : 15, b : 35, l : 45 },
+          "xPos"   : 450,
+          "yPos"   : 550,
+          "width"  : 450,
+          "height" : 200,
+          "hover"  : true,
+          "title"  : { text : "%", size : "S", orientation : "left"},
+          "legend" : { display : true, orientation : "right", size : "S" },
+          "xAxis"  : { displayPath : false, displayValues : true, displayGrid :  true, label : "", min : undefined, max : undefined, time : true },
+          "yAxis"  : { displayPath : false, displayValues : true, displayGrid : false, label : "", min : 0, max : 100, },
+          "path"   : { displayShadow : true, interpolate : "monotone", size : "S", type : "line" },
+          "border" : { display : true, size : "XS" },
+          "debug"  : { displayBox : false, displayBorder : false },
+        }, [
+          { "data" : data7, "label" :   "one" },
+          { "data" : data8 , "label" :   "two" }, 
+        ]); 
+        
+        var b1 = new Brush(svg, {
+            "margin" : { t : 20, r : 15, b : 0, l : 45 },
+            "xPos"   : 0,
+            "yPos"   : 500,
+            "width"  : 900,
+            "height" : 50,
+            "mode"   : "x",
+            "xAxis"  : { displayPath :  true, displayValues :  true, displayGrid : false, label : "", min : undefined, max : undefined, time : true },
+            "yAxis"  : { displayPath : false, displayValues : false, displayGrid : false, label : "", min : 0, max : 100, },
+            "path"   : { displayShadow : false, interpolate : "monotone", size : "XS" },
+            "border" : { display : false },
+            "debug"  : { displayBox : false, displayBorder: false },
+        }, [
+          g4,
+          g5
+        ]);
+        ////////////////////////////////////////////////////////////////////////////////////////// 
+    }
+ 
+  </script>  
+</head>
+
+<body onload="plotIt();">
+   
+  <div id="example">
+  </div> 
+ 
+</body>
+
+</html>

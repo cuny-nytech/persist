@@ -1,0 +1,95 @@
+<% content_for :title do %>
+Image Histogram
+<% end %>
+
+<div class="container">
+  <div class="page-header">
+    <h3> 
+      This app takes an image as input and produces its color and intensity 
+      <a href="http://www.cambridgeincolour.com/tutorials/histograms1.htm" target="_blank">histogram</a>.
+    </h3>
+  </div>
+
+  <% if defined?(error_message) %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <%= erb :alert,
+                  :locals => {
+                    :message => error_message,
+                    :type    => 'danger',
+                    :dismissable => true
+                  }
+          %>
+        </div>
+      </div> 
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <%= erb :form %>
+    </div>
+  </div>
+
+  <% if defined?(success_message) %>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="form-group">
+          <%= erb :alert,
+                  :locals => {
+                    :message => success_message,
+                    :type    => 'success',
+                    :dismissable => true
+                  }
+          %>
+        </div>
+      </div> 
+    </div>
+  <% end %>
+
+  <% if defined?(new_doc) %>
+    <%= erb :result, 
+            :locals => { 'doc' => new_doc, 'height' => 300 } %>
+  <% end %>
+
+  <div class="page-header">
+    <h4> 
+      Saved results
+    </h4>
+  </div>
+
+
+  <% if defined?(docs) && docs != nil && docs.length != 0 %>
+    <div class="row">
+      <% docs.each do |doc| %>
+        <% if doc != (new_doc ||= nil) %>
+          <div class="col-xs-6">
+            <%= erb :result, 
+                    :locals => { 'doc' => doc, 'height' => 200 } %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= erb :alert,
+            :locals => {
+              :message => 'There are no past results to display.',
+              :type    => 'warning',
+              :dismissable => false
+            }
+    %>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
