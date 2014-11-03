@@ -99,12 +99,12 @@ end
                 if( numentry >(offset+15))
                 %>
                 <form method="get" action="/<%=(index+1)%>">
-                    <input class="pagebutton" id="right" type="submit" value=" <%=numentry%> >> <%=(offset+1)%>">
+                    <input class="pagebutton" id="right" type="submit" value=">>">
                 <form>
                 <%
                 end
                 %>
-
+                <p> <%=numentry%>   <%=offset +15%> </p>
             </div>
 
     	</div>  <!-- end of main-->
