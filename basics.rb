@@ -20,7 +20,7 @@ get '/:page' do
 	erb :index
 end
 
-post '/' do 
+post '/form' do 
 	if(params[:name]!="" && params[:avatarimg] !="" && params[:post]!="" && params[:name]!="...person your impersonating here......" && params[:avatarimg] !="....(copy url address of image here....." )
 		conn= PG::Connection.new(host:'ec2-54-83-201-96.compute-1.amazonaws.com',user: 'tylozwhavlzite', password: 'hWIONURH3Ttr5dBfsSp1Urg_bc', dbname:'d7ceioa8vs7n4d',port:'5432')
 		t=Time.now
@@ -39,7 +39,7 @@ post '/' do
     end
     conn.close
 
-	erb :index
+	redirect '/'
 end
 
 not_found do 
