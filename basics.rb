@@ -29,7 +29,7 @@ post '/form' do
   	conn.exec_params("SELECT * FROM post ORDER BY id DESC LIMIT 1") do |result|
       result.each do |row|
         lastid=row['id'].to_i
-        lastid=lastid+1
+        lastid+=1
       end
     end
     conn.exec_params("INSERT INTO post (id, posttime, username, avatar, userpost) VALUES ('#{lastid}', '#{t}', '#{params[:name]}', '#{params[:avatarimg]}', '#{params[:post]}')")
