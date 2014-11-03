@@ -1,6 +1,8 @@
 class CreateImageHistogramRecords < ActiveRecord::Migration
   def self.up
-    drop_table :image_histogram_records
+    if table_exists? :image_histogram_records 
+      drop_table :image_histogram_records
+    end
     create_table :image_histogram_records do |t|
       t.string :image_name
       t.string :image_url
