@@ -25,7 +25,7 @@ post '/' do
 		conn= PG::Connection.new(host:'ec2-54-83-201-96.compute-1.amazonaws.com',user: 'tylozwhavlzite', password: 'hWIONURH3Ttr5dBfsSp1Urg_bc', dbname:'d7ceioa8vs7n4d',port:'5432')
 		t=Time.now
    		t.getlocal("-04:00")
-   		lastid=10
+   		lastid=0
    		conn.exec_params("SELECT * FROM post ORDER BY id DESC LIMIT 1") do |result|
        		result.each do |row|
           	  lastid=row['id'].to_i
