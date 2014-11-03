@@ -1,0 +1,281 @@
+
+ <% conn= PG::Connection.new(host:'ec2-54-83-201-96.compute-1.amazonaws.com',user: 'tylozwhavlzite', password: 'hWIONURH3Ttr5dBfsSp1Urg_bc', dbname:'d7ceioa8vs7n4d',port:'5432')
+
+nameget="...person your impersonating here......"
+imageget="....(copy url address of image here....."
+textget="...Write your post here..."
+if(params[:name]=="")
+    nameget="you must put a name"
+end
+if(params[:avatarimg]=="")
+    imageget="you must put an image url"
+end
+if(params[:post]=="")
+    textget="you must put a text post"
+end
+
+index=0; 
+offset=0;
+if(params[:page])
+    index=(params[:page].to_i)
+    offset=(params[:page].to_i) * 15
+end
+
+
+ %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Famous Watergate</title>
+	</head>
+    <body>
+        <a href="/" id="homerefresh">
+            <div id="header">
+                <p id="title">True Words from the Famous <br> ... 
+                    <img src="https://33.media.tumblr.com/2ccd5c63af9acc3ad6ec563b2659c841/tumblr_ne6iuieIig1s7jjavo1_400.gif"> ...</p>
+                </div>
+        </a>
+    	<div id="main"> 
+            <div id="info"> 
+                <p> <img src="https://38.media.tumblr.com/b78e9000be7b15d9b6934381763d486a/tumblr_ne6ierAUsF1s7jjavo1_400.gif"> Watergate! <br> They said some outrageous shit! <br> What exactly did the say? <br><br> Well you have the power to make it be whatever you want it to be. Post some shit below. 
+            </div>
+
+    		<div class="post" id="newpost">
+    			<form method="post" >
+    				Name :<input id ="nameget" type="text" name="name" value= "<%=nameget%>" onfocus="if (this.value=='...person your impersonating here......') this.value='';" ><br>
+    				Avatar :<input id="imageget" type="text" name="avatarimg" value="<%=imageget%>" onfocus="if (this.value=='....(copy url address of image here.....') this.value='';"><br>
+    				<textarea id="textget" name="post" rows="3" cols="91" maxlength="300" onfocus="if (this.value=='...Write your post here...') this.value='';"><%=textget%></textarea>
+    				<input id="submit" type="submit" value="Submit">
+    			</form>
+    		</div> <!--end of newpost /post -->
+
+    		<!-- ruby code to get the 20 most recent posts -->
+
+            <% conn.exec_params("SELECT * FROM post ORDER BY posttime DESC OFFSET #{offset} ROWS FETCH NEXT 15 ROWS ONLY") do |result|
+                    if result.ntuples == 0 
+            %>
+            <div class="post">
+                <img src="manila.JPG">
+                <div class="ptext">
+                    <p id="name"> Not Availble </p> 
+                    <p id="text"> I'm sorry your not getting anything from the database, or there is nothing in the database, or you went too far, click the top to refresh</p>
+                    <p id="time"> Infinity </p>
+                </div>
+            </div>
+            <%
+                    else 
+                        result.each do |row|
+            %> 
+
+    		<div class="post">
+    			<img src="<%= row['avatar'] %>">
+    			<div class="ptext">
+    				<p id="name"> <%= row['username'] %></p> 
+    				<p id="text"> <%= row['userpost'] %></p>
+    				<p id="time"> <%= row['posttime'] %> </p>
+    			</div>
+    		</div> <!-- end of post -->
+    	    <%
+                        end 
+                    end
+                end
+            %>
+
+            <div id="paginate">
+                <%
+                if(index>0)
+                %>
+                <form method="get" action="/<%=(index-1)%>">
+                    <input class="pagebutton" id="left" type="submit" value="<<">
+                <form>
+                <%
+                end
+                lastid=0;
+                conn.exec_params("SELECT * FROM post ORDER BY id DESC LIMIT 1") do |result|
+                    result.each do |row|
+                        lastid=row['id'].to_i
+                    end
+                end
+                if( lastid >=(offset+15))
+                %>
+                <form method="get" action="/<%=(index+1)%>">
+                    <input class="pagebutton" id="right" type="submit" value=">>">
+                <form>
+                <%
+                end
+                %>
+
+            </div>
+
+    	</div>  <!-- end of main-->
+        
+
+    	<div id="bottomfill"> 
+            <ul> 
+                <a href="/about" id="link"><li id="rightbottom">About</li></a> <a href="/contact" id="link"><li>Contact Us</li> </a>
+            </ul>
+        </div>
+    
+    </body>
+</html>
+
+<%
+conn.close
+%>
+
+<style>
+body {
+	font-family: Courier New;
+	background: url("https://31.media.tumblr.com/49050472baa0c80d0e28ca08daf6fa97/tumblr_ne6gabqNip1s7jjavo1_500.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: 100% 100%;
+	height: 100%; 
+	width:100%;
+    }
+#main {
+	opacity: 0.8;
+    top:-30px;
+    overflow: auto;
+	left:-10px;
+	position: relative;
+	background-color: #FFFFFF;
+	margin:0px auto 0px auto;
+    padding-top:0px;
+    padding-bottom:10px;
+    padding: 0px 10px 10px 0px;
+	width: 690px;
+}
+#header {
+    top:-30px;
+    left:-10px;
+    opacity: 1;
+	position: relative;
+	background-color: #c75143;
+	margin:0px auto 0px auto;
+	width:700px;
+	height:100px;
+	border-top-right-radius: 20px;
+    border-top-left-radius:20px;
+	text-align: center;
+}
+#header img {
+    height:50px;
+}
+#title {
+	font-size: 2em;
+}
+#info {
+    width: 660px;
+    height:100px;
+    font-size: .9em;
+    margin:0px 5px 10px 10px; 
+    text-align: center;
+}
+#info img{
+    width:100px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+#nameget {
+    width: 200px;
+}
+#imageget{
+    width:300px;
+}
+#newpost{ 
+    line-height: 140%;
+    margin-top: -10px;
+}
+
+#submit {
+    float: right;
+    margin:-5px 10px 5px 0px;
+}
+.post {
+	float:left;
+	padding:5px 5px 0px 10px;
+	background-color: #EEEEEE;
+	width: 670px;
+	margin:5px 5px 0px 7px ;
+    border-radius: 10px;
+
+}
+.post img{
+    border-radius: 60px;
+	margin-top:5px;
+	width:100px;
+	float:left;
+	margin-bottom: 5px;
+}
+#bottomfill li{
+    position: relative;
+    display:inline-block;
+    margin: 0px 30px 0px 20px;
+}
+#bottomfill {
+    text-align: center;
+    margin-left: -10px;
+    margin-top: -30px;
+}
+
+
+.ptext {
+    float:left;
+    padding:0px 0px 0px 10px;
+    width:550px;
+}
+#time{
+    margin-top:-10px;
+    margin-bottom:5px;
+    text-align: right;
+    line-height: 100%;
+}
+#name {
+    margin-top:5px;
+	line-height: 100%;
+}
+#text {
+    margin-top: -5px;
+}
+
+#paginate {
+    float:left;
+    width: 685px;
+    margin:5px 5px 0px 7px ;
+    border-radius: 10px;
+
+}
+.pagebutton {
+    border-radius:30px;
+    padding:5px;
+    display: inline-block;
+}
+#right {
+    float:right;
+}
+#left {
+    float:left;
+}
+
+#homerefresh {
+    text-decoration: none;
+    color: #000000;
+}
+
+#link:hover {
+    color: #c75143;
+}
+
+#rightbottom {
+    left:-30px;
+}
+
+#link {
+    text-decoration: none;
+    color: #000000;
+}
+
+
+</style>
