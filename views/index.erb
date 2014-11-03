@@ -93,7 +93,7 @@ end
                 lastid=0;
                 conn.exec_params("SELECT * FROM post") do |result|
                     result.each do |row|
-                        lastid++
+                        lastid+=1
                     end
                 end
                 if( lastid >=(offset+15))
