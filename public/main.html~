@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   <head>
+       <title>Main page</title>
+       <link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+   </head>
+
+
+   <body id="bg">
+       <h1><em id="head">Abdul's Gaming Forum</em></h1>
+      
+       <ul id="nav">
+         <li>Home</li>
+         <li>Community</li>
+         <li>Forums</li>
+       </ul>
+
+      <div id="block1">
+       <p>Hello Everyone! This fourm is dedicated to those who love portable gaming!</p>
+       <p>If you enjoy games like</p>
+       <ul>
+         <li>Super Smash Bros!</li>
+         <li>Killzone Mercenary!</li>
+         <li>Persona 4 Golden!</li>
+         <li>Fire Emblem Awakening!</li>
+       </ul>
+      </div>
+      
+      <div id="block2">
+       <p>just to name a few, you've come to the right place.</p>
+	
+       <p>The primary objective of this forum is to allow portable gamers to interact with one another and to talk about the latest games.</p>
+       <p>But before you can join, we are going to need you sign up!</p>
+
+       <a href="form.html">Please click on the link to sign up!</a>
+     </div>
+   </body>
+</html>
