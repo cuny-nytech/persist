@@ -65,21 +65,29 @@ class ImageHistogramApp < Sinatra::Base
       begin
         response = ImageHistogramApi.post_histogram url
 
-        record = ImageHistogramRecord.new
-        record.image_name = File.basename(URI.parse(url).path)
-        record.image_url  = url
-        record.histogram  = response.body
-        record.author     = nil
+        if response.code == 200
+          record = ImageHistogramRecord.new
+          record.image_name = File.basename(URI.parse(url).path)
+          record.image_url  = url
+          record.histogram  = response.body
+          record.author     = nil
 
-        if params['author'] != ''
-          record.author = params['author']
-          record.save
+          if params['author'] != ''
+            record.author = params['author']
+            record.save
+          end
+          
+          locals = {
+            :new_doc => record,
+            :success_message => "Histogram for image '#{record.image_name}' successfully computed."
+          }
+        else
+          log response.code
+          log response.body
+          locals = {
+            :error_message => 'Error: there was a problem calling the Image Histogram REST API.'
+          }     
         end
-        
-        locals = {
-          :new_doc => record,
-          :success_message => "Histogram for image '#{record.image_name}' successfully computed."
-        }
       rescue Exception => e
         locals = {
           :error_message => 'Error: ' + e.to_s
