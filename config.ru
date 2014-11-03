@@ -1,3 +1,3 @@
-require './persist'
+require './recipe.rb'
 run Sinatra::Application
 
