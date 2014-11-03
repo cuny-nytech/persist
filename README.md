@@ -1,6 +1,6 @@
 # Image Histogram
 
-Runs fine locally, but having problems on Heroku: 
+Runs fine locally, but having database problems on Heroku: 
 
 https://image-histogram.herokuapp.com/
 
@@ -14,7 +14,7 @@ I am reusing my previous Node.js application as the backend REST API for computi
 
 https://image-histogram-api.herokuapp.com/
 
-i.e.:
+e.g.:
 
 curl -X POST -d '{"imageUrl":"imageUrlGoesHere"}' -H "Content-Type: application/json" image-histogram-api.herokuapp.com/histogram 
 
