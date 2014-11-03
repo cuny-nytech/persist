@@ -4,6 +4,12 @@ Runs fine locally, but having problems on Heroku:
 
 https://image-histogram.herokuapp.com/
 
+See the screenshot uploaded.
+
+https://github.com/r-c-s/persist/blob/master/Screenshot%20from%202014-11-03%2015:43:53.png
+
+
+
 I am reusing my previous Node.js application as the backend REST API for computing the image histogram. 
 
 https://image-histogram-api.herokuapp.com/
