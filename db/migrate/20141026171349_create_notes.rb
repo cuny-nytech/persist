@@ -1,9 +1,7 @@
-=begin
-class CreateNotes < ActiveRecord::Migration
-  def change
-  end
-end
-=end
+# class CreateNotes < ActiveRecord::Migration
+#   def change
+#   end
+# end
 
 class CreateNotes < ActiveRecord::Migration
   def self.up
