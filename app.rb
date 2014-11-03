@@ -13,7 +13,7 @@ require 'slim'
 DataMapper::Logger.new($stdout, :debug)
 
 # A Postgres connection
-DataMapper.setup(:default, 'postgres://pedro1:pjer1976@localhost/tclone')
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 class AppPost
   include DataMapper::Resource
