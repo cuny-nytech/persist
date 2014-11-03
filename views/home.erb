@@ -1,0 +1,18 @@
+<section id="add">
+  <form action="/more/" method="get">  
+    <p>We'll be glad to share your Recipes too!</p>  
+    <input type="submit" value="Add a New Recipe">
+  </form>
+</section>
+ 
+<% @recipes.each do |recipe| %>
+  <article >
+    <p>
+      <%=h recipe.recipe_title %>
+      <span><a href="/<%= recipe.id %>">[edit]</a>
+            <a href="/<%= recipe.id %>/view">[view]</a></span>
+    </p>
+    
+    <p class="meta">Created: <%= recipe.created_at %></p>
+  </article>
+<% end %>

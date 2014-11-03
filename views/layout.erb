@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<link href="/rss.xml" rel="alternate" type="application/rss+xml">
+<head>
+  <meta charset="utf8">
+  <title><%= "#{@title} | #{SITE_TITLE}" %></title>
+  <link href="/style.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <hgroup>
+    <div id="header">
+      <h1><%= SITE_TITLE %></h1>     
+      <h2><%= SITE_DESCRIPTION %></h2>
+    </div>
+    </hgroup>
+  </header>
+ 
+  <div id="image">
+    <img src="http://d1xejl9xcsndu9.cloudfront.net/wp-content/uploads/2012/12/MezeRecipes_000005554589-istock_636x431.jpg"/>
+  </div>
+  <div id="main">
+    <%= yield %>
+  </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<% if @recipe %>
+  <p>Are you sure you want to delete the following Recipe: <em>"<%=h @recipe.recipe_title %>"</em>?</p>
+  <form action="/<%= @recipe.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Yes, Delete It!">
+    <a href="/<%= @recipe.id %>">Cancel</a>
+  </form>
+<% else %>
+  <p>Recipe not found.</p>
+<% end %>
