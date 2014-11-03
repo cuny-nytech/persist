@@ -1,0 +1,175 @@
+svg {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+    svg .text {
+      stroke: none;
+    }
+
+    svg .graph {
+    }
+    
+        svg .graph text {
+          stroke: none;
+        }
+
+	svg .graph path {
+          shape-rendering: geometricPrecision;
+	}
+        
+        svg .graph .border {
+          fill: rgba(0,0,0,0);
+          stroke: #555;
+          pointer-events: none;
+          shape-rendering: crispEdges;
+        } 
+        
+        svg .graph .overlay {
+          pointer-events: all;
+          fill: none;
+        }
+        
+        svg .graph .overlayActive {
+          pointer-events: all;
+          fill: none;
+          cursor: move;
+        }
+        
+        svg .graph .graphTitle {
+          font-family: "Trebuchet MS", Helvetica, sans-serif;
+          font-weight: bold;
+          fill: #555;
+        }
+        
+        svg .graph .axis {
+          shape-rendering: crispEdges;
+        }
+        
+            svg .graph .axis text {
+              font-size: 10px; 
+              fill: #999;
+            }
+            
+            svg .graph .axis path {
+              fill: none;
+              stroke: #555;
+            } 
+            
+            svg .graph .axis .label {
+              font-family: "Trebuchet MS", Helvetica, sans-serif;
+              font-weight: normal;
+              font-size: 15px;
+              fill: #555;
+            }
+        
+        svg .graph .x .axis path { 
+          display: none;
+        }
+        
+        svg .graph .y .axis path { 
+          display: none;
+        }
+        
+        svg .graph .paths { 
+        
+        }
+        
+            svg .graph .paths .path { 
+              transition: stroke-width 0.3s ease;
+            }
+            
+            svg .graph .paths .pathHighlight { 
+              transition: stroke-width 0.3s ease; 
+            }
+        
+        svg .graph .legends {
+          font-family: "Lucida Console", Monaco, monospace;
+          cursor: pointer;
+        }
+        
+            svg .graph .legends .legend { 
+              font-weight: normal;
+            }
+            
+            svg .graph .legends .legendHighlight { 
+              font-weight: bold;
+            } 
+            
+            svg .graph .legends .legendShadow { 
+              fill: none;
+              stroke: white;
+              stroke-opacity: 1;
+              stroke-width: 3px;
+            }
+            
+            svg .graph .legends .legendShadowHighlight { 
+              fill: none;
+              stroke: white;
+              stroke-opacity: 1;
+              stroke-width: 3px;
+              font-weight: bold;
+            }
+        
+        svg .graph .time {
+          font-family: "Lucida Console", Monaco, monospace;
+          font-size: 12px;
+          fill: gray;
+        }
+        
+        svg .graph .grid .tick {
+          fill: none;
+          stroke: gray;
+          stroke-opacity: 0.12;
+          shape-rendering: crispEdges;
+        }
+        
+        svg .graph .grid path {
+          stroke-width: 0;
+        } 
+      
+      
+      
+        
+    svg .brush {
+      
+    }
+        
+        svg .brush text {
+          stroke: none;
+        }
+        
+        svg .brush .brush .extent {
+          stroke: steelblue;
+          stroke-opacity: 0.5;
+          fill: steelblue;
+          fill-opacity: 0.1;
+          shape-rendering: crispEdges;
+        }
+        
+        svg .brush .xLabels {
+          font-family: "Lucida Console", Monaco, monospace;
+          font-size: 11px;
+          fill: #555;
+        } 
+        
+        svg .brush .axis path {
+          fill: none;
+          stroke: #555;
+          shape-rendering: crispEdges;
+        } 
+        
+        svg .brush .axis text { 
+          fill: #999;
+        }  
+        
+        svg .brush .showAllLabel {
+          font-family: "Trebuchet MS", Helvetica, sans-serif;
+          fill: #555; 
+          font-size: 15px;
+          cursor: pointer; 
+          font-style: italic;
+        }

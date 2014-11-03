@@ -1,42 +1,35 @@
 require 'rubygems'
+require 'sinatra'
 require 'sinatra/base'
 require 'sinatra/content_for'
+require 'sinatra/activerecord'
 require 'httparty'
 require 'uri'
 require 'json'
 require 'base64'
+require './env'
 
+
+################################################################################
+
+class ImageHistogramRecord < ActiveRecord::Base
+end
 
 ################################################################################
 
 class ImageHistogramApi
 
   include HTTParty
-  base_uri 'localhost:9906'
+  base_uri 'image-histogram-api.herokuapp.com'
 
-  def self.post_histogram(image_url, author)
+  def self.post_histogram(image_url)
     self.post('/histogram', 
       :body => { 
-        'url' => image_url,
-        'author' => author 
+        'imageUrl' => image_url,
       }.to_json,
       :headers => { 
         'Content-Type' => 'application/json', 
         'Accept'       => 'application/json' 
-      })
-  end
-
-  def self.get_docs
-    self.get('/histogram/docs', 
-      :headers => { 
-        'Accept' => 'application/json' 
-      })
-  end
-
-  def self.get_doc(id)
-    self.post('/histogram/docs/' + id, 
-      :headers => { 
-        'Accept' => 'application/json' 
       })
   end
 
@@ -51,14 +44,8 @@ class ImageHistogramApp < Sinatra::Base
   set :root,  File.dirname(__FILE__) 
   set :views, File.join(settings.root, "views")
 
-  get  '/' do
-    docs = []
-
-    begin
-      docs = ImageHistogramApi.get_docs
-    rescue Exception => e
-      puts e
-    end
+  get '/' do
+    docs = ImageHistogramRecord.order("created_at DESC")
 
     erb :index,
         :locals => {
@@ -76,12 +63,22 @@ class ImageHistogramApp < Sinatra::Base
       }      
     else
       begin
-        response = ImageHistogramApi.post_histogram url, 'Raphael'
-        puts response.body
+        response = ImageHistogramApi.post_histogram url
 
+        record = ImageHistogramRecord.new
+        record.image_name = File.basename(URI.parse(url).path)
+        record.image_url  = url
+        record.histogram  = response.body
+        record.author     = nil
+
+        if params['author'] != ''
+          record.author = params['author']
+          record.save
+        end
+        
         locals = {
-          :image_url => 'uploads/' + params['image'][:filename],
-          :success_message => "Histogram for image '#{params['image'][:filename]}' successfully computed."
+          :new_doc => record,
+          :success_message => "Histogram for image '#{record.image_name}' successfully computed."
         }
       rescue Exception => e
         locals = {
@@ -90,18 +87,14 @@ class ImageHistogramApp < Sinatra::Base
       end
     end
 
-    locals['docs'] = []
-
-    begin
-      locals['docs'] = ImageHistogramApi.get_docs
-    rescue Exception => e
-      # ignore
-    end
+    locals['docs'] = ImageHistogramRecord.order("created_at DESC")
 
     erb :index, :locals => locals
   end
 
 end
+
+################################################################################
 
 def get_url_from_params(params)
   image = params['image']
@@ -119,4 +112,12 @@ def get_url_from_params(params)
   else
     url
   end
+end
+
+################################################################################
+
+def log(str)
+  puts '--------------------------------------------'
+  puts str
+  puts '--------------------------------------------'
 end
