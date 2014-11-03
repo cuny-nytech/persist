@@ -82,8 +82,6 @@ class ImageHistogramApp < Sinatra::Base
             :success_message => "Histogram for image '#{record.image_name}' successfully computed."
           }
         else
-          log response.code
-          log response.body
           locals = {
             :error_message => 'Error: there was a problem calling the Image Histogram REST API.'
           }     
