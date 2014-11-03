@@ -1,0 +1,35 @@
+#head
+{
+   color: red;
+   border: 2px solid;
+}
+
+
+#block1
+{
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#block2
+{
+  color: white;
+  font-weight: bold;
+}
+
+#bg
+{
+  background-image: url("kz.jpg");
+}
+
+#bg2
+{
+ background-color: #DCDCDC;
+}
+
+#nav
+{
+ display: inline; 
+ color: white;
+}
