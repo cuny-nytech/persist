@@ -10,7 +10,7 @@ https://image-histogram-api.herokuapp.com/
 
 i.e.:
 
-curl -X POST -d '{"imageUrl":<URL>}' -H "Content-Type: application/json" image-histogram-api.herokuapp.com/histogram 
+curl -X POST -d '{"imageUrl":"imageUrlGoesHere"}' -H "Content-Type: application/json" image-histogram-api.herokuapp.com/histogram 
 
 
 # Persistence assignment
