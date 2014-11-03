@@ -12,11 +12,11 @@ get '/contact' do
 	erb :contact
 end
 
-get '/' do 
-	erb :index
+get '/:page' do
+  erb :index
 end
 
-get '/:page' do
+get '/' do 
 	erb :index
 end
 
