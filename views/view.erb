@@ -1,0 +1,7 @@
+<% if @recipe %>
+  <form id="view">
+    <p><%=h @recipe.content %></p>
+  </form>
+<% else %>
+  <p>Recipe not found.</p>
+<% end %>
