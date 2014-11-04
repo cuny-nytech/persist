@@ -1,0 +1,10 @@
+<ul>
+<% @posts.each do |post| %>
+  <li>
+    <h4>
+      <a href="/posts/<%= post.id %>" id="plink"><%=h post.title %></a>
+      <span style="font-size: 7pt">&nbsp;&nbsp;&nbsp;&nbsp;<%=h post.created_at.localtime %></span>
+    </h4>
+  </li>
+<% end %>
+</ul>
