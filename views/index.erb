@@ -1,0 +1,124 @@
+
+ <% conn= PG::Connection.new(host:'ec2-54-225-102-235.compute-1.amazonaws.com',user: 'blqijevewuznsa', password: '4ciDikAsPFofqZGfcBGFzSppe2', dbname:'d8df2nk7lqp4f9',port:'5432')
+ 
+nameget="...person your impersonating here......"
+imageget="....(copy url address of image here....."
+textget="...Write your post here..."
+if(params[:name]=="")
+    nameget="you must put a name"
+end
+if(params[:avatarimg]=="")
+    imageget="you must put an image url"
+end
+if(params[:post]=="")
+    textget="you must put a text post"
+end
+
+index=0; 
+offset=0;
+if(params[:page])
+    index=(params[:page].to_i)
+    offset=(params[:page].to_i) * 15
+end
+
+
+ %>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Famous Watergate</title>
+        <link href="./stylesheets/style.css" rel="stylesheet" type="text/css">
+	</head>
+    <body>
+        <a href="/" id="homerefresh">
+            <div id="header">
+                <p id="title">True Words from the Famous <br> ... 
+                    <img src="https://33.media.tumblr.com/2ccd5c63af9acc3ad6ec563b2659c841/tumblr_ne6iuieIig1s7jjavo1_400.gif"> ...</p>
+                </div>
+        </a>
+    	<div id="main"> 
+            <div id="info"> 
+                <p> <img src="https://38.media.tumblr.com/b78e9000be7b15d9b6934381763d486a/tumblr_ne6ierAUsF1s7jjavo1_400.gif"> Watergate! <br> They said some outrageous shit! <br> What exactly did the say? <br><br> Well you have the power to make it be whatever you want it to be. Post some shit below. 
+            </div>
+
+    		<div class="post" id="newpost">
+    			<form method="post" action="/form">
+    				Name :<input id ="nameget" type="text" name="name" value= "<%=nameget%>" onfocus="if (this.value=='...person your impersonating here......') this.value='';" ><br>
+    				Avatar :<input id="imageget" type="text" name="avatarimg" value="<%=imageget%>" onfocus="if (this.value=='....(copy url address of image here.....') this.value='';"><br>
+    				<textarea id="textget" name="post" rows="3" cols="91" maxlength="300" onfocus="if (this.value=='...Write your post here...') this.value='';"><%=textget%></textarea>
+    				<input id="submit" type="submit" value="Submit">
+    			</form>
+    		</div> <!--end of newpost /post -->
+
+    		<!-- ruby code to get the 20 most recent posts -->
+
+            <% conn.exec_params("SELECT * FROM post ORDER BY posttime DESC OFFSET #{offset} ROWS FETCH NEXT 15 ROWS ONLY") do |result|
+                    if result.ntuples == 0 
+            %>
+            <div class="post">
+                <img src="manila.JPG">
+                <div class="ptext">
+                    <p id="name"> Not Availble </p> 
+                    <p id="text"> I'm sorry your not getting anything from the database, or there is nothing in the database, or you went too far, click the top to refresh</p>
+                    <p id="time"> Infinity </p>
+                </div>
+            </div>
+            <%
+                    else 
+                        result.each do |row|
+            %> 
+
+    		<div class="post">
+    			<img src="<%= row['avatar'] %>">
+    			<div class="ptext">
+    				<p id="name"> <%= row['username'] %></p> 
+    				<p id="text"> <%= row['userpost'] %></p>
+    				<p id="time"> <%= row['posttime'] %> </p>
+    			</div>
+    		</div> <!-- end of post -->
+    	    <%
+                        end 
+                    end
+                end
+            %>
+
+            <div id="paginate">
+                <%
+                if(index>0)
+                %>
+                <form method="get" action="/<%=(index-1)%>">
+                    <input class="pagebutton" id="left" type="submit" value="<<">
+                <form>
+                <%
+                end
+                numentry=0;
+                conn.exec_params("SELECT * FROM post") do |result|
+                    result.each do |row|
+                        numentry+=1
+                    end
+                end
+                if( numentry >(offset+15))
+                %>
+                <form method="get" action="/<%=(index+1)%>">
+                    <input class="pagebutton" id="right" type="submit" value=">>">
+                <form>
+                <%
+                end
+                %>
+            </div>
+
+    	</div>  <!-- end of main-->
+        
+
+    	<div id="bottomfill"> 
+            <ul> 
+                <a href="/about" id="link"><li id="rightbottom">About</li></a> <a href="/contact" id="link"><li>Contact Us</li> </a>
+            </ul>
+        </div>
+    
+    </body>
+</html>
+
+<%
+conn.close()
+%>
